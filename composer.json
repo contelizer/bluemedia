@@ -1,7 +1,7 @@
 {
     "name": "contelizer/bluemedia",
     "type": "project",
-    "description": "The Bluemedia extension.",
+    "description": "The Bluemedia extra extension.",
     "license": "MIT",
     "version": "0.0.1-stable",
     "require": {

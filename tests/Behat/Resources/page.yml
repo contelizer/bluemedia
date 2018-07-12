@@ -1,6 +1,6 @@
 services:
     bitbag.payu_plugin.page.external:
-        class: Tests\Contelizer\Bluemedia\Behat\Page\External\PayUCheckoutPage
+        class: Tests\Contelizer\SyliusBluemediaPlugin\Behat\Page\External\PayUCheckoutPage
         parent: sylius.behat.page
         public: false
         arguments:

@@ -1,4 +1,4 @@
 suites:
     main:
-        namespace: Contelizer\Bluemedia
-        psr4_prefix: Contelizer\Bluemedia
+        namespace: Contelizer\SyliusBluemediaPlugin
+        psr4_prefix: Contelizer\SyliusBluemediaPlugin

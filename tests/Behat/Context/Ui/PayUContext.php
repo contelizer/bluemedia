@@ -8,13 +8,13 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Tests\Contelizer\Bluemedia\Behat\Context\Ui;
+namespace Tests\Contelizer\SyliusBluemediaPlugin\Behat\Context\Ui;
 
 use Behat\Behat\Context\Context;
 use Sylius\Behat\Page\Shop\Checkout\CompletePageInterface;
 use Sylius\Behat\Page\Shop\Order\ShowPageInterface;
-use Tests\Contelizer\Bluemedia\Behat\Mocker\PayUApiMocker;
-use Tests\Contelizer\Bluemedia\Behat\Page\External\PayUCheckoutPageInterface;
+use Tests\Contelizer\SyliusBluemediaPlugin\Behat\Mocker\PayUApiMocker;
+use Tests\Contelizer\SyliusBluemediaPlugin\Behat\Page\External\PayUCheckoutPageInterface;
 
 /**
  * @author Dawid Majka <dawid.majka@contelizer.pl>

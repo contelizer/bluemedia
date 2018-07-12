@@ -1,28 +1,28 @@
 services:
     contelizer.payu_plugin.form.type.gateway_configuration:
-        class: Contelizer\Bluemedia\Form\Type\BluemediaGatewayConfigurationType
+        class: Contelizer\SyliusBluemediaPlugin\Form\Type\BluemediaGatewayConfigurationType
         tags:
             - { name: sylius.gateway_configuration_type, type: payu, label: contelizer.payu_plugin.gateway_label }
             - { name: form.type }
 
     contelizer.payu_plugin.gateway_factory:
         class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
-        arguments: [Contelizer\Bluemedia\BluemediaGatewayFactory]
+        arguments: [Contelizer\SyliusBluemediaPlugin\BluemediaGatewayFactory]
         tags:
             - { name: payum.gateway_factory_builder, factory: payu }
 
     contelizer.payu_plugin.bridge.open_payu:
-        class: Contelizer\Bluemedia\Bridge\OpenBluemediaBridge
+        class: Contelizer\SyliusBluemediaPlugin\Bridge\OpenBluemediaBridge
 
     contelizer.payu_plugin.payu_action:
-        class: Contelizer\Bluemedia\Action\PayUAction
+        class: Contelizer\SyliusBluemediaPlugin\Action\PayUAction
         public: true
         arguments: ['@contelizer.payu_plugin.bridge.open_payu', '@payum']
         tags:
             - { name: payum.action, factory: payu, alias: payum.action.set_payu }
 
     contelizer.payu_plugin.notify_action:
-        class: Contelizer\Bluemedia\Action\NotifyAction
+        class: Contelizer\SyliusBluemediaPlugin\Action\NotifyAction
         public: true
         arguments:
             - '@contelizer.payu_plugin.bridge.open_payu'

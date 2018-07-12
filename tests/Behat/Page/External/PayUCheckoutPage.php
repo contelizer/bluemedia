@@ -8,7 +8,7 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Tests\Contelizer\Bluemedia\Behat\Page\External;
+namespace Tests\Contelizer\SyliusBluemediaPlugin\Behat\Page\External;
 
 use Behat\Mink\Session;
 use Payum\Core\Security\TokenInterface;

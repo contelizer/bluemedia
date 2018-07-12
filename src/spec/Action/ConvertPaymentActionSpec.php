@@ -8,9 +8,9 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace spec\Contelizer\Bluemedia\Action;
+namespace spec\Contelizer\SyliusBluemediaPlugin\Action;
 
-use Contelizer\Bluemedia\Action\ConvertPaymentAction;
+use Contelizer\SyliusBluemediaPlugin\Action\ConvertPaymentAction;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Model\PaymentInterface;

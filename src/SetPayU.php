@@ -8,7 +8,7 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Contelizer\Bluemedia;
+namespace Contelizer\SyliusBluemediaPlugin;
 
 use Payum\Core\Request\Generic;
 

@@ -8,10 +8,10 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Tests\Contelizer\Bluemedia\Behat\Mocker;
+namespace Tests\Contelizer\SyliusBluemediaPlugin\Behat\Mocker;
 
-use Contelizer\Bluemedia\Bridge\OpenBluemediaBridge;
-use Contelizer\Bluemedia\Bridge\OpenBluemediaBridgeInterface;
+use Contelizer\SyliusBluemediaPlugin\Bridge\OpenBluemediaBridge;
+use Contelizer\SyliusBluemediaPlugin\Bridge\OpenBluemediaBridgeInterface;
 use Sylius\Behat\Service\Mocker\Mocker;
 
 /**

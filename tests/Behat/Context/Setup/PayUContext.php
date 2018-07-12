@@ -8,7 +8,7 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Tests\Contelizer\Bluemedia\Behat\Context\Setup;
+namespace Tests\Contelizer\SyliusBluemediaPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
 use Sylius\Behat\Service\SharedStorageInterface;

@@ -8,9 +8,9 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Contelizer\Bluemedia\Action;
+namespace Contelizer\SyliusBluemediaPlugin\Action;
 
-use Contelizer\Bluemedia\Bridge\OpenBluemediaBridgeInterface;
+use Contelizer\SyliusBluemediaPlugin\Bridge\OpenBluemediaBridgeInterface;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\ApiAwareInterface;
 use Payum\Core\Exception\RequestNotSupportedException;

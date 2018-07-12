@@ -1,5 +1,5 @@
 {
-    "name": "contelizer/bluemedia",
+    "name": "contelizer/bluemedia-plugin",
     "type": "sylius-plugin",
     "description": "The Bluemedia extra extension.",
     "license": "MIT",
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Contelizer\\Bluemedia\\": "src/"
+            "Contelizer\\SyliusBluemediaPlugin\\": "src/"
         }
     }
 }

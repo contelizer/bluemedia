@@ -8,7 +8,7 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Contelizer\Bluemedia\Exception;
+namespace Contelizer\SyliusBluemediaPlugin\Exception;
 
 use Payum\Core\Exception\Http\HttpException;
 

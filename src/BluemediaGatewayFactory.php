@@ -8,13 +8,13 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Contelizer\Bluemedia;
+namespace Contelizer\SyliusBluemediaPlugin;
 
-use Contelizer\Bluemedia\Action\CaptureAction;
-use Contelizer\Bluemedia\Action\ConvertPaymentAction;
-use Contelizer\Bluemedia\Action\NotifyAction;
-use Contelizer\Bluemedia\Action\StatusAction;
-use Contelizer\Bluemedia\Bridge\OpenBluemediaBridge;
+use Contelizer\SyliusBluemediaPlugin\Action\CaptureAction;
+use Contelizer\SyliusBluemediaPlugin\Action\ConvertPaymentAction;
+use Contelizer\SyliusBluemediaPlugin\Action\NotifyAction;
+use Contelizer\SyliusBluemediaPlugin\Action\StatusAction;
+use Contelizer\SyliusBluemediaPlugin\Bridge\OpenBluemediaBridge;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\GatewayFactory;
 

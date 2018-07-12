@@ -8,9 +8,9 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Contelizer\Bluemedia\Action;
+namespace Contelizer\SyliusBluemediaPlugin\Action;
 
-use Contelizer\Bluemedia\Bridge\OpenBluemediaBridge;
+use Contelizer\SyliusBluemediaPlugin\Bridge\OpenBluemediaBridge;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\GatewayAwareInterface;
 use Payum\Core\GatewayAwareTrait;

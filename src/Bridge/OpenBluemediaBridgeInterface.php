@@ -8,7 +8,7 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Contelizer\Bluemedia\Bridge;
+namespace Contelizer\SyliusBluemediaPlugin\Bridge;
 
 /**
  * @author Dawid Majka <dawid.majka@contelizer.pl>

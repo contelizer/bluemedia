@@ -8,13 +8,13 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Contelizer\Bluemedia;
+namespace Contelizer\SyliusBluemediaPlugin;
 
 use Sylius\Bundle\CoreBundle\Application\SyliusPluginTrait;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 
-final class ContelizerBluemediaPlugin extends Bundle
+final class ContelizerSyliusBluemediaPlugin extends Bundle
 {
     use SyliusPluginTrait;
 }

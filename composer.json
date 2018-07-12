@@ -15,10 +15,5 @@
         "psr-4": {
             "Contelizer\\Bluemedia\\": ""
         }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.5-dev"
-        }
     }
 }

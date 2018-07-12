@@ -1,16 +1,14 @@
-# Skeleton
+# Contelizer
 
 The Payum extension to rapidly build new extensions.
 
 1. Create new project
 
 ```bash
-$ composer create-project payum/skeleton
+$ composer create-project contelizer/bluemedia
 ```
 
-2. Replace all occurrences of `payum` with your vendor name. It may be your github name, for now let's say you choose: `acme`.
-3. Replace all occurrences of `skeleton` with a payment gateway name. For example Stripe, Paypal etc. For now let's say you choose: `paypal`.
-4. Register a gateway factory to the payum's builder and create a gateway:
+2. Register a gateway factory to the payum's builder and create a gateway:
 
 ```php
 <?php
@@ -34,7 +32,7 @@ $payum = (new PayumBuilder)
 ;
 ```
 
-5. While using the gateway implement all method where you get `Not implemented` exception:
+3. While using the gateway implement all method where you get `Not implemented` exception:
 
 ```php
 <?php
@@ -52,11 +50,7 @@ $paypal->execute(new Capture($model));
 
 ## Resources
 
-* [Site](https://payum.forma-pro.com/)
-* [Documentation](https://github.com/Payum/Payum/blob/master/docs/index.md#general)
-* [Questions](http://stackoverflow.com/questions/tagged/payum)
-* [Issue Tracker](https://github.com/Payum/Payum/issues)
-* [Twitter](https://twitter.com/payumphp)
+* [Site](http://contelizer.pl/)
 
 ## Developed by Forma-Pro
 
@@ -68,4 +62,4 @@ If you have any questions and inquires about our open source development, this p
 
 ## License
 
-Skeleton is released under the [MIT License](LICENSE).
+Contelizer Bluemedia plugin  is released under the [MIT License](LICENSE).

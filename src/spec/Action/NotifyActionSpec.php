@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * This file was created by the developers from Contelizer.
+ * Feel free to contact us once you face any issues or want to start
+ * another great project.
+ * You can find more information about us on https://contelizer.pl and write us
+ * an email on biuro@contelizer.pl.
+ */
+
+namespace spec\Contelizer\Bluemedia\Action;
+
+use Contelizer\Bluemedia\Action\NotifyAction;
+use Contelizer\Bluemedia\Bridge\OpenBluemediaBridgeInterface;
+use Contelizer\Bluemedia\SetPayU;
+use Payum\Core\Bridge\Spl\ArrayObject;
+use Payum\Core\Exception\RequestNotSupportedException;
+use Payum\Core\GatewayInterface;
+use Payum\Core\Request\GetHumanStatus;
+use Payum\Core\Request\Notify;
+use Payum\Core\Security\TokenInterface;
+use PhpSpec\ObjectBehavior;
+
+/**
+ * @author Damian Frańczuk <damian.franczuk@contelizer.pl>
+ */
+final class NotifyActionSpec extends ObjectBehavior
+{
+    function let(OpenBluemediaBridgeInterface $openPayUBridge)
+    {
+        $this->beConstructedWith($openPayUBridge);
+    }
+
+    function it_is_initializable()
+    {
+        $this->shouldHaveType(NotifyAction::class);
+    }
+
+    function it_executes(
+        Notify $request,
+        TokenInterface $token,
+        ArrayObject $model,
+        SetPayU $setPayU,
+        GetHumanStatus $status,
+        GatewayInterface $gateway
+
+    )
+    {
+        $request->getToken()->willReturn($token);
+        $request->getModel()->willReturn($model);
+        $setPayU->getToken()->willReturn($token);
+        $setPayU->getModel()->willReturn($model);
+
+        $this->setGateway($gateway);
+        $this->getGateway()->execute($status);
+        $this->getGateway()->execute($setPayU);
+    }
+
+    function it_throws_exception_when_model_is_not_array_object(Notify $request)
+    {
+        $request->getModel()->willReturn(null);
+
+        $this
+            ->shouldThrow(RequestNotSupportedException::class)
+            ->during('execute', [$request])
+        ;
+    }
+}

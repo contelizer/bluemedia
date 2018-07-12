@@ -1,9 +1,9 @@
 {
     "name": "contelizer/bluemedia",
-    "type": "project",
+    "type": "sylius-plugin",
     "description": "The Bluemedia extra extension.",
     "license": "MIT",
-    "version": "0.0.2-stable",
+    "version": "0.0.3-stable",
     "require": {
         "payum/core": "^1.5"
     },
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Contelizer\\Bluemedia\\": ""
+            "Contelizer\\Bluemedia\\": "src/"
         }
     }
 }

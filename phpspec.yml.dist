@@ -1,0 +1,2 @@
+suites:
+    PayUPlugin: { namespace: Contelizer\Bluemedia, psr4_prefix: Contelizer\Bluemedia, spec_path: src, src_path: src }

@@ -1,24 +1,9 @@
 {
-    "name": "payum/skeleton",
+    "name": "contelizer/bluemedia",
     "type": "project",
-    "description": "The Payum extension. Rapid extensino development",
-    "keywords": ["payment"],
-    "homepage": "https://payum.forma-pro.com",
+    "description": "The Bluemedia extension.",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Kotlyar Maksim",
-            "email": "kotlyar.maksim@gmail.com"
-        },
-        {
-            "name":     "Payum project",
-            "homepage": "https://payum.forma-pro.com/"
-        },
-        {
-            "name":     "Community contributions",
-            "homepage": "https://github.com/Payum/AuthorizeNetAim/contributors"
-        }
-    ],
+    "version": "0.0.1-stable",
     "require": {
         "payum/core": "^1.5"
     },
@@ -27,12 +12,12 @@
         "php-http/guzzle6-adapter": "^1.0"
     },
     "config": {
-        "bin-dir": "bin"0
+        "bin-dir": "bin"
     },
     "autoload": {
-        "psr-0": { "Payum\\Skeleton": "" }
+        "psr-0": { "Contelizer\\Bluemedia": "" }
     },
-    "target-dir": "Payum/Skeleton",
+    "target-dir": "Contelizer/Bluemedia",
     "extra": {
         "branch-alias": {
             "dev-master": "1.5-dev"

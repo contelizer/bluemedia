@@ -1,30 +1,30 @@
 services:
-    contelizer.payu_plugin.form.type.gateway_configuration:
+    contelizer.bluemedia_plugin.form.type.gateway_configuration:
         class: Contelizer\SyliusBluemediaPlugin\Form\Type\BluemediaGatewayConfigurationType
         tags:
-            - { name: sylius.gateway_configuration_type, type: payu, label: contelizer.payu_plugin.gateway_label }
+            - { name: sylius.gateway_configuration_type, type: bluemedia, label: contelizer.bluemedia_plugin.gateway_label }
             - { name: form.type }
 
-    contelizer.payu_plugin.gateway_factory:
+    contelizer.bluemedia_plugin.gateway_factory:
         class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
         arguments: [Contelizer\SyliusBluemediaPlugin\BluemediaGatewayFactory]
         tags:
-            - { name: payum.gateway_factory_builder, factory: payu }
+            - { name: payum.gateway_factory_builder, factory: bluemedia }
 
-    contelizer.payu_plugin.bridge.open_payu:
+    contelizer.bluemedia_plugin.bridge.open_bluemedia:
         class: Contelizer\SyliusBluemediaPlugin\Bridge\OpenBluemediaBridge
 
-    contelizer.payu_plugin.payu_action:
+    contelizer.bluemedia_plugin.payu_action:
         class: Contelizer\SyliusBluemediaPlugin\Action\PayUAction
         public: true
-        arguments: ['@contelizer.payu_plugin.bridge.open_payu', '@payum']
+        arguments: ['@contelizer.bluemedia_plugin.bridge.open_payu', '@payum']
         tags:
-            - { name: payum.action, factory: payu, alias: payum.action.set_payu }
+            - { name: payum.action, factory: bluemedia, alias: payum.action.set_payu }
 
-    contelizer.payu_plugin.notify_action:
+    contelizer.bluemedia_plugin.notify_action:
         class: Contelizer\SyliusBluemediaPlugin\Action\NotifyAction
         public: true
         arguments:
-            - '@contelizer.payu_plugin.bridge.open_payu'
+            - '@contelizer.bluemedia_plugin.bridge.open_payu'
         tags:
-            - { name: payum.action, factory: payu, alias: payum.action.notify }
+            - { name: payum.action, factory: bluemedia, alias: payum.action.notify }

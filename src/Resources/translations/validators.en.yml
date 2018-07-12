@@ -1,5 +1,5 @@
-bitbag:
-    payu_plugin:
+contelizer:
+    bluemedia_plugin:
         gateway_configuration:
             pos_id:
                 not_blank: The payment ID has not been provided.

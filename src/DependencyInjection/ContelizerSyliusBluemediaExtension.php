@@ -8,7 +8,7 @@
  * an email on biuro@contelizer.pl.
  */
 
-namespace Contelizer\SyliusBluemediaPlugin\DependencyInjection;
+namespace Contelizer\ContelizerSyliusBluemediaPlugin\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\Loader;
 /**
  * @author Damian Frańczuk <damian.franczuk@contelizer.pl>
  */
-final class BitBagSyliusPayUExtension extends Extension
+final class ContelizerSyliusBluemediaExtension extends Extension
 {
     /**
      * {@inheritdoc}

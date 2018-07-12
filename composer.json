@@ -3,7 +3,7 @@
     "type": "project",
     "description": "The Bluemedia extra extension.",
     "license": "MIT",
-    "version": "0.0.1-stable",
+    "version": "0.0.2-stable",
     "require": {
         "payum/core": "^1.5"
     },

@@ -10,6 +10,7 @@
 
 namespace Contelizer\SyliusBluemediaPlugin\Action;
 
+use Contelizer\SyliusBluemediaPlugin\SetBluemedia;
 use Contelizer\SyliusBluemediaPlugin\SetPayU;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
@@ -31,6 +32,9 @@ final class CaptureAction implements ActionInterface, GatewayAwareInterface
      */
     public function execute($request)
     {
+       $this->contelizerExecute($request);
+    }
+    public function contelizerExecute($request){
         RequestNotSupportedException::assertSupports($this, $request);
 
         $model = $request->getModel();
@@ -39,12 +43,9 @@ final class CaptureAction implements ActionInterface, GatewayAwareInterface
         $order = $request->getFirstModel()->getOrder();
         $model['customer'] = $order->getCustomer();
         $model['locale'] = $this->getFallbackLocaleCode($order->getLocaleCode());
-
-        $payUAction = $this->getPayUAction($request->getToken(), $model);
-
-        $this->getGateway()->execute($payUAction);
+        $bluemediaAction = $this->getBluemediaAction($request->getToken(), $model);
+        $this->getGateway()->execute($bluemediaAction);
     }
-
     /**
      * {@inheritdoc}
      */
@@ -76,6 +77,20 @@ final class CaptureAction implements ActionInterface, GatewayAwareInterface
         $payUAction->setModel($model);
 
         return $payUAction;
+    }
+
+    /**
+     * @param TokenInterface $token
+     * @param ArrayObject $model
+     *
+     * @return SetBluemedia
+     */
+    private function getBluemediaAction(TokenInterface $token, ArrayObject $model)
+    {
+        $bluemediaAction = new SetBluemedia($token);
+        $bluemediaAction->setModel($model);
+
+        return $bluemediaAction;
     }
 
     private function getFallbackLocaleCode($localeCode)

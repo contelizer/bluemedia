@@ -25,6 +25,7 @@ final class BluemediaGatewayFactory extends GatewayFactory
      */
     protected function populateConfig(ArrayObject $config)
     {
+        dump('jestem tu 0');
         $config->defaults([
             'payum.factory_name' => 'bluemedia',
             'payum.factory_title' => 'bluemedia',

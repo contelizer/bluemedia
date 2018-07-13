@@ -15,6 +15,6 @@ use Payum\Core\Request\Generic;
 /**
  * @author Damian Frańczuk <damian.franczuk@contelizer.pl>
  */
-class SetPayU extends Generic
+class SetBluemedia extends Generic
 {
 }

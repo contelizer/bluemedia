@@ -14,17 +14,17 @@ services:
     contelizer.bluemedia_plugin.bridge.open_bluemedia:
         class: Contelizer\SyliusBluemediaPlugin\Bridge\OpenBluemediaBridge
 
-    contelizer.bluemedia_plugin.payu_action:
-        class: Contelizer\SyliusBluemediaPlugin\Action\PayUAction
+    contelizer.bluemedia_plugin.bluemedia_action:
+        class: Contelizer\SyliusBluemediaPlugin\Action\BluemediaAction
         public: true
-        arguments: ['@contelizer.bluemedia_plugin.bridge.open_payu', '@payum']
+        arguments: ['@contelizer.bluemedia_plugin.bridge.open_bluemedia', '@payum']
         tags:
-            - { name: payum.action, factory: bluemedia, alias: payum.action.set_payu }
+            - { name: payum.action, factory: bluemedia, alias: payum.action.set_bluemedia }
 
     contelizer.bluemedia_plugin.notify_action:
         class: Contelizer\SyliusBluemediaPlugin\Action\NotifyAction
         public: true
         arguments:
-            - '@contelizer.bluemedia_plugin.bridge.open_payu'
+            - '@contelizer.bluemedia_plugin.bridge.open_bluemedia'
         tags:
             - { name: payum.action, factory: bluemedia, alias: payum.action.notify }

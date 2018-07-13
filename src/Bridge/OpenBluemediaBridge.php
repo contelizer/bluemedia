@@ -21,9 +21,10 @@ final class OpenBluemediaBridge implements OpenBluemediaBridgeInterface
      */
     public function setAuthorizationDataApi($environment, $signatureKey, $posId)
     {
-        \OpenBluemedia_Configuration::setEnvironment($environment);
-        \OpenBluemedia_Configuration::setSignatureKey($signatureKey);
-        \OpenBluemedia_Configuration::setMerchantPosId($posId);
+//TODO - tutaj dorobić autoryzację BM
+//        \OpenBluemedia_Configuration::setEnvironment($environment);
+//        \OpenBluemedia_Configuration::setSignatureKey($signatureKey);
+//        \OpenBluemedia_Configuration::setMerchantPosId($posId);
     }
 
     /**

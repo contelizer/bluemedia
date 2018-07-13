@@ -10,8 +10,11 @@
 
 namespace Contelizer\SyliusBluemediaPlugin\Action;
 
+use AppBundle\AppBundle;
+use AppBundle\Services\BlueMedia;
 use Contelizer\SyliusBluemediaPlugin\Exception\PayUException;
 use Contelizer\SyliusBluemediaPlugin\Bridge\OpenBluemediaBridgeInterface;
+use Contelizer\SyliusBluemediaPlugin\SetBluemedia;
 use Contelizer\SyliusBluemediaPlugin\SetPayU;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\ApiAwareInterface;
@@ -27,7 +30,7 @@ use Payum\Core\Payum;
 /**
  * @author Damian Frańczuk <damian.franczuk@contelizer.pl>
  */
-final class PayUAction implements ApiAwareInterface, ActionInterface
+final class BluemediaAction implements ApiAwareInterface, ActionInterface
 {
     private $api = [];
 
@@ -57,10 +60,10 @@ final class PayUAction implements ApiAwareInterface, ActionInterface
      * @param OpenBluemediaBridgeInterface $openPayUBridge
      * @param Payum $payum
      */
-    public function __construct(OpenBluemediaBridgeInterface $openPayUBridge, Payum $payum)
+    public function __construct(OpenBluemediaBridgeInterface $openBluemediaBridge, Payum $payum)
     {
         $this->payum = $payum;
-        $this->openPayUBridge = $openPayUBridge;
+        $this->openBluemediaBridge = $openBluemediaBridge;
     }
 
     /**
@@ -68,48 +71,22 @@ final class PayUAction implements ApiAwareInterface, ActionInterface
      */
     public function execute($request)
     {
+        $this->contelizerExecute($request);
+    }
+
+    public function contelizerExecute($request){
         RequestNotSupportedException::assertSupports($this, $request);
         $environment = $this->api['environment'];
         $signature = $this->api['signature_key'];
         $posId = $this->api['pos_id'];
-
-        $openPayU = $this->getOpenPayUBridge();
-        $openPayU->setAuthorizationDataApi($environment, $signature, $posId);
-
         $model = ArrayObject::ensureArrayObject($request->getModel());
+        $id = $request->getToken()->getDetails()->getId();
+        $bluemedia = new BlueMedia();
+        $link = $bluemedia->getPaymentLink($posId,$signature,$model['totalAmount'],$id);
 
-        if (null !== $model['orderId']) {
-            /** @var mixed $response */
-            $response = $openPayU->retrieve($model['orderId'])->getResponse();
-            Assert::keyExists($response->orders, 0);
-
-            if (OpenBluemediaBridgeInterface::SUCCESS_API_STATUS === $response->status->statusCode) {
-                $model['statusPayU'] = $response->orders[0]->status;
-                $request->setModel($model);
-            }
-
-            if (OpenBluemediaBridgeInterface::NEW_API_STATUS !== $response->orders[0]->status) {
-
-                return;
-            }
-        }
-
-        /**
-         * @var TokenInterface $token
-         */
-        $token = $request->getToken();
-        $order = $this->prepareOrder($token, $model, $posId);
-        $response = $openPayU->create($order)->getResponse();
-
-        if ($response && OpenBluemediaBridgeInterface::SUCCESS_API_STATUS === $response->status->statusCode) {
-            $model['orderId'] = $response->orderId;
-            $request->setModel($model);
-
-            throw new HttpRedirect($response->redirectUri);
-        }
-
-        throw PayUException::newInstance($response->status);
+        throw new HttpRedirect($link);
     }
+
 
     /**
      * {@inheritDoc}
@@ -117,7 +94,7 @@ final class PayUAction implements ApiAwareInterface, ActionInterface
     public function supports($request)
     {
         return
-            $request instanceof SetPayU &&
+            $request instanceof SetBluemedia &&
             $request->getModel() instanceof \ArrayObject
             ;
     }

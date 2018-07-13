@@ -29,25 +29,25 @@ final class BluemediaGatewayConfigurationType extends AbstractType
         $builder
             ->add('environment', ChoiceType::class, [
                 'choices' => [
-                    'contelizer.payu_plugin.secure' => 'secure',
-                    'contelizer.payu_plugin.sandbox' => 'sandbox',
+                    'contelizer.bluemedia_plugin.secure' => 'secure',
+                    'contelizer.bluemedia_plugin.sandbox' => 'sandbox',
                 ],
-                'label' => 'contelizer.payu_plugin.environment',
+                'label' => 'contelizer.bluemedia_plugin.environment',
             ])
             ->add('signature_key', TextType::class, [
-                'label' => 'contelizer.payu_plugin.signature_key',
+                'label' => 'contelizer.bluemedia_plugin.signature_key',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'contelizer.payu_plugin.gateway_configuration.signature_key.not_blank',
+                        'message' => 'contelizer.bluemedia_plugin.gateway_configuration.signature_key.not_blank',
                         'groups' => ['sylius'],
                     ])
                 ],
             ])
             ->add('pos_id', TextType::class, [
-                'label' => 'contelizer.payu_plugin.pos_id',
+                'label' => 'contelizer.bluemedia_plugin.pos_id',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'contelizer.payu_plugin.gateway_configuration.pos_id.not_blank',
+                        'message' => 'contelizer.bluemedia_plugin.gateway_configuration.pos_id.not_blank',
                         'groups' => ['sylius'],
                     ])
                 ],

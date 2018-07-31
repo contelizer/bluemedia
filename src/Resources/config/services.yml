@@ -17,7 +17,7 @@ services:
     contelizer.bluemedia_plugin.bluemedia_action:
         class: Contelizer\SyliusBluemediaPlugin\Action\BluemediaAction
         public: true
-        arguments: ['@contelizer.bluemedia_plugin.bridge.open_bluemedia', '@payum']
+        arguments: ['@contelizer.bluemedia_plugin.bridge.open_bluemedia', '@payum', '@sylius.repository.payment']
         tags:
             - { name: payum.action, factory: bluemedia, alias: payum.action.set_bluemedia }
 

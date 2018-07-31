@@ -23,7 +23,10 @@ use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Exception\UnsupportedApiException;
 use Payum\Core\Reply\HttpRedirect;
 use Payum\Core\Security\TokenInterface;
+use Sylius\Bundle\CoreBundle\Doctrine\ORM\PaymentRepository;
+use Sylius\Bundle\OrderBundle\Doctrine\ORM\OrderRepository;
 use Sylius\Component\Core\Model\CustomerInterface;
+use Sylius\Component\Resource\Factory\Factory;
 use Webmozart\Assert\Assert;
 use Payum\Core\Payum;
 
@@ -37,7 +40,7 @@ final class BluemediaAction implements ApiAwareInterface, ActionInterface
     /**
      * @var OpenBluemediaBridgeInterface
      */
-    private $openPayUBridge;
+    private $openBluemediaBridge;
 
     /**
      * @var Payum
@@ -60,10 +63,11 @@ final class BluemediaAction implements ApiAwareInterface, ActionInterface
      * @param OpenBluemediaBridgeInterface $openPayUBridge
      * @param Payum $payum
      */
-    public function __construct(OpenBluemediaBridgeInterface $openBluemediaBridge, Payum $payum)
+    public function __construct(OpenBluemediaBridgeInterface $openBluemediaBridge, Payum $payum, PaymentRepository $paymentRepository)
     {
         $this->payum = $payum;
         $this->openBluemediaBridge = $openBluemediaBridge;
+        $this->paymentRepository = $paymentRepository;
     }
 
     /**
@@ -82,7 +86,13 @@ final class BluemediaAction implements ApiAwareInterface, ActionInterface
         $model = ArrayObject::ensureArrayObject($request->getModel());
         $id = $request->getToken()->getDetails()->getId();
         $bluemedia = new BlueMedia();
-        $link = $bluemedia->getPaymentLink($posId,$signature,$model['totalAmount'],$id);
+
+        $payment = $this->paymentRepository->find($id);
+        if($payment->getOrder()->getSubscription()){
+            $link = $bluemedia->getRecursivePaymentLink($posId,$signature,$model['totalAmount'],$id);
+        }else{
+            $link = $bluemedia->getPaymentLink($posId,$signature,$model['totalAmount'],$id);
+        }
 
         throw new HttpRedirect($link);
     }
@@ -102,17 +112,17 @@ final class BluemediaAction implements ApiAwareInterface, ActionInterface
     /**
      * @return OpenBluemediaBridgeInterface
      */
-    public function getOpenPayUBridge()
+    public function getOpenBluemediaBridge()
     {
-        return $this->openPayUBridge;
+        return $this->openBluemediaBridge;
     }
 
     /**
      * @param OpenBluemediaBridgeInterface $openPayUBridge
      */
-    public function setOpenPayUBridge($openPayUBridge)
+    public function setOpenPayUBridge($openBluemediaBridge)
     {
-        $this->openPayUBridge = $openPayUBridge;
+        $this->openBluemediaBridge = $openBluemediaBridge;
     }
 
     private function prepareOrder(TokenInterface $token, $model, $posId)

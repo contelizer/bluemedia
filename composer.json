@@ -3,7 +3,7 @@
     "type": "sylius-plugin",
     "description": "The Bluemedia extra extension.",
     "license": "MIT",
-    "version": "0.0.4-stable",
+    "version": "0.0.5",
     "require": {
         "payum/core": "^1.5"
     },

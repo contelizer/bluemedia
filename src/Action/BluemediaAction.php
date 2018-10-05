@@ -88,7 +88,7 @@ final class BluemediaAction implements ApiAwareInterface, ActionInterface
         $bluemedia = new BlueMedia();
 
         $payment = $this->paymentRepository->find($id);
-        if($payment->getOrder()->getSubscription()){
+        if ($payment->getOrder()->getSubscription() && !$payment->getOrder()->getSubscription()->isPaidAhead()) {
             $link = $bluemedia->getRecursivePaymentLink($posId,$signature,$model['totalAmount'],$id);
         }else{
             $link = $bluemedia->getPaymentLink($posId,$signature,$model['totalAmount'],$id);
